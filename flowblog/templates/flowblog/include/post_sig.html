@@ -1,0 +1,7 @@
+<span class="pull-right">
+By {{ p.user.first_name }} about
+{% for t in p.tags.all %}
+    <a href="{% url 'blog-tag' t.id t.title|slugify %}">{{ t }}</a>
+    {% if not forloop.last %}, {% endif %}
+{% endfor %}
+</span>

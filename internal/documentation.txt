@@ -1,0 +1,5 @@
+This app will take care of internal processes and provide us an environment to grow.
+
+The main point of the internal app is to streamline processes and help us develop
+and maintain websites with more efficiency. It handles things such as keeping track
+of clients, task management and service management.

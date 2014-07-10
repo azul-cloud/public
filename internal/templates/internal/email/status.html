@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div id="email-body" style="padding: 20px; border: solid 5px #5bc0de; border-radius: 4px;">
+        <h1>Completed tasks for {{ yesterday }}</h1>
+        {% for t in tasks %}
+        <h4>{{ t.id }} - {{ t.title }} </h4>
+        <p style="margin-top:0; padding-top:0;">{{ t.description }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

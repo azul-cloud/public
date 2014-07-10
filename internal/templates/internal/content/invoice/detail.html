@@ -1,0 +1,13 @@
+{% extends 'main/include/base.html' %}
+
+{% block body %}
+<div class="container" style="margin-top:20px;">
+    <div class="row">
+        {% include "internal/include/invoice/detail.html" %}
+    </div>
+    <div class="row">
+        <a href="{% url 'project-invoice' invoice.id %}" class="btn btn-info"><span class="glyphicon glyphicon-arrow-left"></span> Invoice Summary</a>
+        <a href="" class="btn btn-info"><span class="glyphicon glyphicon-envelope"></span> Send Invoice Details</a>
+    </div>
+</div>
+{% endblock %}

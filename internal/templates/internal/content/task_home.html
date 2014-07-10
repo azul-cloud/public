@@ -1,0 +1,56 @@
+{% extends "internal/include/base.html" %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1>Tasks Home</h1>
+</div>
+<div class="container task-home-container">
+    <div class="row">
+        <div class="col-md-5 well">
+            <h3 class="task-list-header">My New Tasks</h3>
+            {% for o in my_new_tasks %}
+                {{ o }}<br>
+            {% endfor %}
+            <div class="text-center">
+                <a href="{% url 'tasks' 'my' 'new' %}" class="btn btn-info">My New Tasks</a>
+            </div>
+        </div>
+
+        <div class="col-md-5 col-md-offset-2 well">
+            <h3 class="task-list-header ">My Active Tasks</h3>
+            {% for o in my_active_tasks %}
+                {{ o }}<br>
+            {% endfor %}
+            <div class="text-center">
+                <a href="{% url 'tasks' 'my' 'active' %}" class="btn btn-info">My Active Tasks</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 well">
+            <h3 class="task-list-header">All Tasks</h3>
+            {% for o in object_list %}
+                {{ o }}<br>
+            {% endfor %}
+            <div class="text-center">
+                <a href="{% url 'tasks' 'all' 'all' %}" class="btn btn-info">All Tasks</a>
+            </div>
+        </div>
+
+        <div class="col-md-5 col-md-offset-2 well">
+            <h3 class="task-list-header">My Inactive Tasks</h3>
+            {% for o in my_closed_tasks %}
+                {{ o }}<br>
+            {% endfor %}
+            <div class="text-center">
+                <a href="{% url 'tasks' 'my' 'inactive' %}" class="btn btn-info">My Inactive Tasks</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block header %}
+{% include "internal/include/header.html" %}
+{% endblock %}

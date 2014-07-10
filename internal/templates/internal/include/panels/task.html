@@ -1,0 +1,10 @@
+{% extends "flowcore/general/panel.html" %}
+
+{% block panel_heading %}
+<h1 class="text-center">Tasks</h1>
+{% include "internal/include/task_links.html" %}
+{% endblock %}
+
+{% block panel_body %}
+{% include "internal/include/tables/tasks.html" %}
+{% endblock %}

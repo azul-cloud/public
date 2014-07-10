@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    {% block body %}
+    <div id="email-body" style="border: solid 5px #46b8da; border-radius: 4px;">
+        <div id="header-row">
+            <div style="display:inline; width:80%; ">
+                <h1 style=" margin-top:0; padding:20px; background-color: #5bc0de; color:white; text-align:center;">
+                    {% block email_header %}Azul Cloud Studio{% endblock %}
+                </h1>
+            </div>
+            <div style="display: inline; padding-right:20px; width:20%; float:right;">
+                <img src="{{ webURLroot }}static/img/logo.png" style="max-width:100%; height:auto; text-align:center;" />
+            </div>
+        </div>
+
+        <div id="body-row" style="margin:20px;">
+            <div>
+                {% block email_body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

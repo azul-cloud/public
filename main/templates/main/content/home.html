@@ -1,0 +1,99 @@
+{% extends "main/include/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block javascript %}
+{% include "flowcore/general/open_modal.html" %}
+{% endblock %}
+
+{% block body_extra %}
+    {% include "main/include/modals/contact_sent.html" %}
+    {% include "main/include/modals/contact_error.html" %}
+{% endblock %}
+
+{% block body %}
+<div class="row section-stars">
+    <div class="container main-container">
+        <div class="col-md-5 col-md-offset-1 text-center main-text">
+            <h1>Website Development For Your Small Business</h1>
+            <a class="btn btn-default btn-lg" href="#whoweare">Who We Are</a>
+            <a class="btn btn-default btn-lg" href="#examples">Examples</a>
+            <a class="btn btn-default btn-lg" href="#contact">Contact Us</a>
+        </div>
+        <div class="col-md-6 hidden-sm hidden-xs">
+            <img src="/static/img/responsive_design.png" class="img-responsive" />
+        </div>
+    </div>
+</div>
+
+<div class="row row-whoweare" id="whoweare">
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h2>Understanding small business requirements and mission is the key to building a successful website</h2>
+        </div>
+        <div class="trait-container">
+            {% for t in traits %}
+            {% if forloop.counter|divisibleby:"2" %}<div class="row">{% endif %}
+                <div class="hidden-xs hidden-sm">
+                    {% include "main/include/traits.html" %}
+                </div>
+                <div class="hidden-lg hidden-md container">
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            {% include "main/include/traits.html" %}
+                        </div>
+                    </div>
+                </div>
+            {% if forloop.counter|divisibleby:"2" %}</div>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="row row-examples" id="examples">
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Our Past Work</h1>
+        </div>
+        {% for e in examples %}
+        <div class="row example-row">
+            <div class="example-item">
+                {% if not forloop.counter|divisibleby:"2" %}
+                <div class="col-md-6 col-xs-12">
+                    <h2><a href="{{ e.url }}" class="example-link">{{ e.title }}</a></h2>
+                    <p>{{ e.text }}</p>
+                </div>
+                {% endif %}
+                {% if forloop.counter|divisibleby:"2" %}
+                <div class="col-md-6 hidden-md hidden-lg">
+                    <h2><a href="{{ e.url }}" class="example-link">{{ e.title }}</a></h2>
+                    <p>{{ e.text }}</p>
+                </div>
+                {% endif %}
+                <div class="col-md-6 col-xs-12">
+                    <img src="{{ e.image.url }}" class="img-responsive img-rounded" />
+                </div>
+                {% if forloop.counter|divisibleby:"2" %}
+                <div class="col-md-6 hidden-xs hidden-sm">
+                    <h2><a href="{{ e.url }}" class="example-link">{{ e.title }}</a></h2>
+                    <p>{{ e.text }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="row row-contact" id="contact">
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Contact</h1>
+            <div class="col-md-8 col-md-offset-2">
+                {% crispy form %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

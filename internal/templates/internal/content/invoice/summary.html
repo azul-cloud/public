@@ -1,0 +1,23 @@
+{% extends "internal/include/base.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="col-md-8 col-md-offset-2 col-xs-12" style="margin-top:20px;">
+        {% include "internal/include/invoice/summary.html" %}
+        <div class="row">
+            <form method="POST">
+                <a class="btn btn-info" href="{% url 'project-hours' project.id %}"><span class="glyphicon glyphicon-check"></span> Active Hours</a>
+                <button type="submit" name="email" class="btn btn-info"><span class="glyphicon glyphicon-envelope"></span> Send Invoice</button>
+                <a class="btn btn-info" href="{% url 'project-invoice-details' invoice.id %}">
+                    <span class="glyphicon glyphicon-screenshot"></span> See Details</a>
+                <div class="pull-right">
+                    <button type="submit" name="delete" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-trash"></span> Delete Invoice
+                    </button>
+                </div>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

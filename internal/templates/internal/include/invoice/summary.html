@@ -1,0 +1,66 @@
+<div class="text-center header-inverse">
+    <h1>Invoice for {{ project.title }}</h1>
+</div>
+<div class="row row-invoice-header">
+    <div class="col-md-4">
+        <h2 class="text-center">Azul Cloud Studio</h2>
+        <div class="col-md-4">
+            <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />
+        </div>
+        <div class="col-md-4">
+            <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />
+        </div>
+        <div class="col-md-4">
+            <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h3>ACH Transfer to:</h3>
+        <p>Routing: 325181248</p>
+        <p>Account: 4907465</p>
+    </div>
+    <div class="col-md-4">
+        <h3>Send Check To:</h3>
+        <p>Adam Wester</p>
+        <p>105 Patton St.</p>
+        <p>Richland, WA 99354</p>
+    </div>
+</div>
+<div class="row row-invoice">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Invoice Number</th>
+                <th>Invoice Date</th>
+                {% if invoice.due_date %}<th>Due Date</th>{% endif %}
+                <th>Invoice Start</th>
+                <th>Invoice End</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.invoice_date }}</td>
+                {% if invoice.due_date %}<td>{{ invoice.due_date }}</td>{% endif %}
+                <td>{{ invoice.start_date.date__min }}</td>
+                <td>{{ invoice.end_date.date__max }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Rate</th>
+                <th>Hours</th>
+                <th>Amount Due</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ invoice.rate }}</td>
+                <td>{{ invoice.total_hours }}</td>
+                <td>{{ invoice.total_amount }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

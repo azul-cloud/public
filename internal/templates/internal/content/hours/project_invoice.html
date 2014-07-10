@@ -1,0 +1,75 @@
+{% extends "internal/include/base.html" %}
+
+{% block body %}
+<div class="col-md-6 col-md-offset-3" style="margin-top:20px;">
+    <h1 class="text-center">Invoice for {{ project.title }}</h1>
+    <div class="row row-invoice-header">
+        <div class="col-md-6">
+            <h3>Bill To:</h3>
+            <p>Adam Wester</p>
+            <p>105 Patton st..</p>
+            <p>Richland, WA 99354</p>
+        </div>
+        <div class="col-md-6 text-center">
+            <div class="col-md-4">
+                <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />
+            </div>
+            <h1>Azul Cloud Studio</h1>
+        </div>
+    </div>
+    <div class="row row-invoice">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Invoice Number</th>
+                    <th>Invoice Date</th>
+                    {% if invoice.due_date %}<th>Due Date</th>{% endif %}
+                    <th>Invoice Start</th>
+                    <th>Invoice End</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ invoice.id }}</td>
+                    <td>(generated on send)</td>
+                    {% if invoice.due_date %}<td>{{ invoice.due_date }}</td>{% endif %}
+                    <td>{{ invoice.start_date.date__min }}</td>
+                    <td>{{ invoice.end_date.date__max }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Rate</th>
+                    <th>Hours</th>
+                    <th>Amount Due</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ invoice.project.pay_amount }}</td>
+                    <td>{{ invoice.total_hours }}</td>
+                    <td>{{ invoice.total_amount }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-right">
+        <a class="btn btn-info" href=""><span class="glyphicon glyphicon-envelope"></span> Send Invoice</a>
+        <form method="POST" action="{% url 'delete-invoice' invoice.id %}">
+           {% csrf_token %}
+            <button type="submit" class="btn btn-danger" >
+                <span class="glyphicon glyphicon-trash"></span> Delete Invoice
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "flowcore/tables/default.html" %}
+
+{% block table_head %}
+<tr>
+    <th>Project</th>
+    <th>Status</th>
+    <th>Invoice Date</th>
+    <th>Due Date</th>
+    <th></th>
+</tr>
+{% endblock %}
+
+{% block table_body %}
+{% for i in invoices %}
+<tr>
+    <td>{{ i.project }}</td>
+    <td>{{ i.get_status_display }}</td>
+    <td>{{ i.invoice_date }}</td>
+    <td>{{ i.due_date }}</td>
+    <td><a href="{% url 'project-invoice' i.id %}" class="btn btn-info">
+        <span class="glyphicon glyphicon-edit"></span> Details</a>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}

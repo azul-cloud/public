@@ -1,0 +1,131 @@
+/********** MAIN *********/
+#wrap {
+	min-height: 100%;
+	width: 100%;
+}
+
+#main {
+  overflow:hidden;
+  padding-bottom: 150px; /* this needs to be bigger than footer height*/
+}
+
+footer {
+	height: 140px;
+	padding-top: 20px;
+    background: url(/static/img/back-dark-texture.png);
+	/*background-image: -moz-linear-gradient(top, #3c3c3c 0%, #222222 100%);*/
+ /*   background-image: linear-gradient(to bottom, #3c3c3c 0%, #222222 100%);*/
+    color: white;
+}
+
+.main-container {
+    padding-bottom:10%;
+}
+
+.main-text a {
+    margin-bottom:5px;
+}
+.main-text h1 {
+    padding:5% inherit;
+    margin-top:3%;
+    background: url(/static/img/back-dark-texture.png);
+    border-radius:5px;
+}
+.header-inverse {
+    color:white;
+    background-color:#5bc0de;
+    border-radius:15px;
+    padding:5px;
+}
+.row-examples {
+    background-image: url(/static/img/back-dark-texture.png);
+    color:white;
+}
+.example-row {
+    margin:25px 0;
+}
+.trait-item,
+.example-item {
+    padding:25px 0;
+}
+.example-item a:active,
+.example-item a:focus,
+.example-item a:visited{
+    color:inherit;
+    text-decoration:none;
+}
+.example-item a:hover {
+    color: #5bc0de;
+    text-decoration:none;
+}
+
+/********** STARS **********/
+@-webkit-keyframes animated-stars{from{background-position:0 0} to{background-position:1674px 0}}
+@-moz-keyframes animated-stars{from{background-position:0 0} to{background-position:1674px 0}}
+@-ms-keyframes animated-stars{from{background-position:0 0} to{background-position:1674px 0}}
+@-o-keyframes animated-stars{from{background-position:0 0} to{background-position:1674px 0}}
+@keyframes animated-stars{from{background-position:0 0} to{background-position:1674px 0}}
+
+/*//d7mj4aqfscim2.cloudfront.net/images/splash-2014/star-pattern.svg*/
+.section-stars{background:#1caff6 url("//d7mj4aqfscim2.cloudfront.net/images/splash-2014/star-pattern.svg") 0 0;
+    -webkit-animation:animated-stars 70s linear infinite 300ms;
+    -moz-animation:animated-stars 70s linear infinite 300ms;
+    -ms-animation:animated-stars 70s linear infinite 300ms;
+    -o-animation:animated-stars 70s linear infinite 300ms;
+    animation:animated-stars 70s linear infinite 300ms;padding:15% 0 0 0;*zoom:1}
+.section-stars:before,.section-stars:after{display:table;content:"";line-height:0}
+.section-stars:after{clear:both}
+.section-stars p{color:#fff}
+.section-stars h1{color:#fff}
+.section-stars .section-inner-narrow{padding:0 440px 40px 40px;position:relative;min-height:320px}
+.section-stars .section-inner-wide{padding:0 40px 40px 40px;position:relative;min-height:400px;margin-top:-20px}
+.section-stars.space{background-color:#04335f}
+
+
+/********** INTERNAL **********/
+.task-list-header {
+    text-align: center;
+}
+
+.task-home-container .btn-info {
+    margin-top:10px;
+}
+
+
+/********** BLOG **********/
+.blog-post-row {
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+/********** RESPONSIVE **********/
+@media (max-width: 768px) {
+    .main-container {
+        padding-bottom:5%;
+    }
+    .main-text h1 {
+        padding:5% inherit;
+        margin-top:3%;
+        background: url(/static/img/back-dark-texture.png);
+        border-radius:5px;
+        font-size:250%;
+    }
+    .section-stars {
+        padding: 5% 0 0 0;
+    }
+}
+@media (max-width: 400px) {
+    .main-container {
+        padding-bottom:15%;
+    }
+    .main-text h1 {
+        padding:5% inherit;
+        margin-top:3%;
+        background: url(/static/img/back-dark-texture.png);
+        border-radius:5px;
+        font-size:150%;
+    }
+    h2 {
+        font-size:90%;
+    }
+}
