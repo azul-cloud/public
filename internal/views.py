@@ -185,6 +185,7 @@ def project_hours(request, **kwargs):
         invoice = Invoice()
         invoice.project = project
         invoice.invoice_date = date.today()
+        invoice.rate = project.pay_amount
         invoice.save()
 
         if 'full' in request.POST:
@@ -195,12 +196,20 @@ def project_hours(request, **kwargs):
         elif 'dates' in request.POST:
             start_date = request.POST['start']
             end_date = request.POST['end']
+
             # add dates within date range to the new invoice
             object_list = object_list.filter(date__range=(start_date, end_date))
 
             for h in object_list:
                 h.invoice = invoice
                 h.save()
+
+        # add invoice start and end dates and save
+        invoice.start_date = start_date
+        invoice.end_date = end_date
+        invoice.save()
+
+
 
         return HttpResponseRedirect(reverse('project-invoice', kwargs={'pk':invoice.id}))
 

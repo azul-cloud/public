@@ -147,6 +147,8 @@ class Invoice(models.Model):
     rate = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     due_date = models.DateField(null=True, blank=True)
     invoice_date = models.DateField(null=True, blank=True)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
 
     class Meta:
         ordering = ['-id']
@@ -171,14 +173,6 @@ class Invoice(models.Model):
             total_hours += h.hours
 
         return total_hours
-
-    def start_date(self):
-        start_date = self.hours_set.filter(invoice=self).aggregate(Min('date'))
-        return start_date
-
-    def end_date(self):
-        end_date = self.hours_set.filter(invoice=self).aggregate(Max('date'))
-        return end_date
 
 
 class Hours(models.Model):

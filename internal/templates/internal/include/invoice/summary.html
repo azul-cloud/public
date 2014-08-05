@@ -1,29 +1,33 @@
 <div class="text-center header-inverse">
-    <h1>Invoice for {{ project.title }}</h1>
+    <h1 style="font-weight:300;">Invoice for {{ project.title }}</h1>
 </div>
 <div class="row row-invoice-header">
+    <!--<div class="col-md-4">-->
+    <!--    <h2 class="text-center">Azul Cloud Studio</h2>-->
+    <!--    <div class="col-md-4">-->
+    <!--        <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />-->
+    <!--    </div>-->
+    <!--    <div class="col-md-4">-->
+    <!--        <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />-->
+    <!--    </div>-->
+    <!--    <div class="col-md-4">-->
+    <!--        <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />-->
+    <!--    </div>-->
+    <!--</div>-->
     <div class="col-md-4">
-        <h2 class="text-center">Azul Cloud Studio</h2>
-        <div class="col-md-4">
-            <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />
-        </div>
-        <div class="col-md-4">
-            <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />
-        </div>
-        <div class="col-md-4">
-            <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />
-        </div>
-    </div>
-    <div class="col-md-4">
-        <h3>ACH Transfer to:</h3>
+        <h3>ACH Transfer</h3>
         <p>Routing: 325181248</p>
         <p>Account: 4907465</p>
     </div>
     <div class="col-md-4">
-        <h3>Send Check To:</h3>
+        <h3>Send Check</h3>
         <p>Adam Wester</p>
         <p>105 Patton St.</p>
         <p>Richland, WA 99354</p>
+    </div>
+    <div class="col-md-4">
+        <h3>Card Payment</h3>
+        <p>Let me know if you would like to pay with a card and I will set it up</p>
     </div>
 </div>
 <div class="row row-invoice">
@@ -42,8 +46,8 @@
                 <td>{{ invoice.id }}</td>
                 <td>{{ invoice.invoice_date }}</td>
                 {% if invoice.due_date %}<td>{{ invoice.due_date }}</td>{% endif %}
-                <td>{{ invoice.start_date.date__min }}</td>
-                <td>{{ invoice.end_date.date__max }}</td>
+                <td>{{ invoice.start_date }}</td>
+                <td>{{ invoice.end_date }}</td>
             </tr>
         </tbody>
     </table>
