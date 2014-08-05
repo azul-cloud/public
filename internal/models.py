@@ -16,6 +16,7 @@ CSS_LIB_CHOICES = (
 
 DJANGO_VER_CHOICES = (
     ('1.3', '1.3'),
+    ('1.5', '1.5'),
     ('1.6', '1.6'),
 )
 
@@ -53,6 +54,7 @@ INVOICE_STATUS_CHOICES = (
     ('P', 'Pending'),
     ('S', 'Sent'),
     ('C', 'Paid'),
+    ('W', 'Waived'),
     ('O', 'Overdue')
 )
 

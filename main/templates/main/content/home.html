@@ -59,13 +59,13 @@
             <div class="example-item">
                 {% if not forloop.counter|divisibleby:"2" %}
                 <div class="col-md-6 col-xs-12">
-                    <h2><a href="{{ e.url }}" class="example-link">{{ e.title }}</a></h2>
+                    <h2><a href="{{ e.link }}" class="example-link">{{ e.title }}</a></h2>
                     <p>{{ e.text }}</p>
                 </div>
                 {% endif %}
                 {% if forloop.counter|divisibleby:"2" %}
                 <div class="col-md-6 hidden-md hidden-lg">
-                    <h2><a href="{{ e.url }}" class="example-link">{{ e.title }}</a></h2>
+                    <h2><a href="{{ e.link }}" class="example-link">{{ e.title }}</a></h2>
                     <p>{{ e.text }}</p>
                 </div>
                 {% endif %}
@@ -74,7 +74,7 @@
                 </div>
                 {% if forloop.counter|divisibleby:"2" %}
                 <div class="col-md-6 hidden-xs hidden-sm">
-                    <h2><a href="{{ e.url }}" class="example-link">{{ e.title }}</a></h2>
+                    <h2><a href="{{ e.link }}" class="example-link">{{ e.title }}</a></h2>
                     <p>{{ e.text }}</p>
                 </div>
                 {% endif %}
