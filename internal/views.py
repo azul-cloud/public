@@ -209,8 +209,6 @@ def project_hours(request, **kwargs):
         invoice.end_date = end_date
         invoice.save()
 
-
-
         return HttpResponseRedirect(reverse('project-invoice', kwargs={'pk':invoice.id}))
 
     return render(request, 'internal/content/hours/project_hours.html',
