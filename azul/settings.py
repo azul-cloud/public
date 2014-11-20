@@ -97,9 +97,9 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-MEDIA_ROOT = '/Users/awwester/Sites/azul/azul/media'
+STATIC_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/awwester/azul/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 # email settings
