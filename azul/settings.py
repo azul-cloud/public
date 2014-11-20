@@ -20,8 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 env = os.environ.get('ENV')
 
 if env == 'prod':
-    DEBUG = False
-    TEMPLATE_DEBUG = False
+    DEBUG = True
+    TEMPLATE_DEBUG = True
 
     if DEBUG:
         STATICFILES_DIRS = (
