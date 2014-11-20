@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.conf import settings
 
 from django.contrib import admin
 admin.autodiscover()
@@ -23,6 +24,8 @@ sitemaps = {
 }
 
 urlpatterns = patterns('',
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}),
     url(r'^', include('main.urls')),
     url(r'^internal/', include('internal.urls')),
     url(r'^blog/', include('flowblog.urls')),

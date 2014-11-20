@@ -34,7 +34,7 @@ class Migration(SchemaMigration):
             ('name', self.gf('django.db.models.fields.CharField')(max_length=60)),
             ('company', self.gf('django.db.models.fields.CharField')(max_length=60)),
             ('email', self.gf('django.db.models.fields.CharField')(max_length=60)),
-            ('skype', self.gf('django.db.models.fields.CharField')(max_length=40, null=True, blank=True)),
+            ('skype', self.gf('django.db.models.fields.CharField')(blank=True, max_length=40, null=True)),
             ('message', self.gf('django.db.models.fields.CharField')(max_length=2000)),
         ))
         db.send_create_signal('main', ['Contact'])
@@ -59,7 +59,7 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'message': ('django.db.models.fields.CharField', [], {'max_length': '2000'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '60'}),
-            'skype': ('django.db.models.fields.CharField', [], {'max_length': '40', 'null': 'True', 'blank': 'True'})
+            'skype': ('django.db.models.fields.CharField', [], {'blank': 'True', 'max_length': '40', 'null': 'True'})
         },
         'main.example': {
             'Meta': {'ordering': "['order']", 'object_name': 'Example'},

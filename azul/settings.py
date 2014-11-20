@@ -10,11 +10,33 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+env = os.environ.get('ENV')
+
+if env == 'prod':
+    DEBUG = False
+    TEMPLATE_DEBUG = False
+
+    if DEBUG:
+        STATICFILES_DIRS = (
+            os.path.join(BASE_DIR, 'static'),
+        )
+    else:
+        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+else:
+    DEBUG = True
+    TEMPLATE_DEBUG = True
+
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'jql!$!bb-@!d7%6mld%x%+qx00*1r--!6#!+-sqyuco(uk$o8p'
@@ -24,8 +46,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -63,16 +84,8 @@ WSGI_APPLICATION = 'azul.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'awwester$azul',                      # Or path to database file if using sqlite3.
-        'USER': 'awwester',                      # Not used with sqlite3.
-        'PASSWORD': 'water2q4',                  # Not used with sqlite3.
-        'HOST': 'mysql.server',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
+DATABASES = {}
+DATABASES['default'] =  dj_database_url.config()
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -84,7 +97,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-MEDIA_ROOT = '/home/awwester/azul/media'
+MEDIA_ROOT = '/Users/awwester/Sites/azul/azul/media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = '/home/awwester/azul/static'
 STATIC_URL = '/static/'
