@@ -23,25 +23,17 @@ get the environment variable and set certain static variables based upon
 the dev/test/prod environment
 '''
 env = os.environ.get('ENV')
-if env == 'test':
-    DEBUG = True
-elif env == 'prod':
+if env == 'prod':
     DEBUG = False
+    SECRET_KEY = 'jql!$!bb-@!d7%6nld%x%+qx01*1r--!6#!+-sqyuco(uk$o8p'
+elif env == 'test':
+    DEBUG = True
+    SECRET_KEY = 'jql!$!cb-@!d7%6mld%x%+qx00*1r--!6#!+-squuco(uk$o8p'
 else:
     DEBUG = True
+    SECRET_KEY = 'jql!$!bo-@!d7%8mld%x%+qx00*1r--!6#!+-sqyuko(uk$o8p'
 
 TEMPLATE_DEBUG = DEBUG
-
-if DEBUG:
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jql!$!bb-@!d7%6mld%x%+qx00*1r--!6#!+-sqyuco(uk$o8p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -96,9 +88,10 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-STATIC_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # email settings
 EMAIL_HOST = 'smtp.gmail.com'

@@ -26,6 +26,9 @@ sitemaps = {
 urlpatterns = patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT}),
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.STATIC_ROOT}),
+    
     url(r'^', include('main.urls')),
     url(r'^internal/', include('internal.urls')),
     url(r'^blog/', include('flowblog.urls')),
