@@ -1,0 +1,1 @@
+web: gunicorn azul.wsgi --log-file -
