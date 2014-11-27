@@ -25,7 +25,7 @@ the dev/test/prod environment
 env = os.environ.get('ENV')
 if env == 'test':
     DEBUG = True
-else if env == 'prod':
+elif env == 'prod':
     DEBUG = False
 else:
     DEBUG = True
