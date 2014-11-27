@@ -17,25 +17,27 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+
+'''
+get the environment variable and set certain static variables based upon
+the dev/test/prod environment
+'''
 env = os.environ.get('ENV')
-
-if env == 'prod':
+if env == 'test':
     DEBUG = True
-    TEMPLATE_DEBUG = True
-
-    if DEBUG:
-        STATICFILES_DIRS = (
-            os.path.join(BASE_DIR, 'static'),
-        )
-    else:
-        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+else if env == 'prod':
+    DEBUG = False
 else:
     DEBUG = True
-    TEMPLATE_DEBUG = True
 
+TEMPLATE_DEBUG = DEBUG
+
+if DEBUG:
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
     )
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
