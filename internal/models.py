@@ -113,36 +113,6 @@ class Website(models.Model):
         return 'Website for ' + self.project.title
 
 
-class Task(models.Model):
-    '''
-    Tasks are changes that are wanted by the client. Each task has to be
-    linked to a specific project. The client will be mailed a subset
-    of tasks that is handled in a view.
-    '''
-    project = models.ForeignKey(Project)
-    title = models.CharField(max_length=50)
-    description = models.TextField()
-    dev_notes = models.TextField(null=True, blank=True)
-    status = models.CharField(max_length=1, choices=TASK_STATUS_CHOICES)
-    complete_date = models.DateField(null=True, blank=True)
-    notify_client = models.BooleanField(default=True)
-    sent_date = models.DateField(null=True, blank=True)
-    create_date = models.DateField(auto_now_add=True)
-    assigned_to = models.ForeignKey(get_user_model(), default=1)
-
-    def __str__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return reverse('task-update', kwargs={'pk':self.id})
-
-    def is_active(self):
-        if self.status == "C" or self.status == "I":
-            return True
-        else:
-            return False
-
-
 class Invoice(models.Model):
     project = models.ForeignKey(Project)
     status = models.CharField(max_length=1, choices=INVOICE_STATUS_CHOICES, default="P")

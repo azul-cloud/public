@@ -5,13 +5,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 from django.contrib.sitemaps import GenericSitemap
-from internal.models import Task
 from flowblog.models import Post
 
-task_info_dict = {
-    'queryset': Task.objects.all(),
-    'date_field': 'create_date'
-}
 
 blog_info_dict = {
     'queryset': Post.objects.filter(active=True),
@@ -19,7 +14,6 @@ blog_info_dict = {
 }
 
 sitemaps = {
-    "task": GenericSitemap(task_info_dict, priority=0.6),
     "blog": GenericSitemap(blog_info_dict, priority=0.6)
 }
 

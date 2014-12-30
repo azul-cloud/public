@@ -26,10 +26,11 @@ env = os.environ.get('ENV')
 if env == 'prod':
     DEBUG = False
     SECRET_KEY = 'jql!$!bb-@!d7%6nld%x%+qx01*1r--!6#!+-sqyuco(uk$o8p'
-elif env == 'test':
-    DEBUG = True
+elif env == 'staging':
+    DEBUG = False
     SECRET_KEY = 'jql!$!cb-@!d7%6mld%x%+qx00*1r--!6#!+-squuco(uk$o8p'
 else:
+    # local
     DEBUG = True
     SECRET_KEY = 'jql!$!bo-@!d7%8mld%x%+qx00*1r--!6#!+-sqyuko(uk$o8p'
 
@@ -90,8 +91,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if DEBUG:
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # email settings
 EMAIL_HOST = 'smtp.gmail.com'
@@ -101,3 +108,4 @@ EMAIL_HOST_PASSWORD = 'Watere34'
 EMAIL_USE_TLS = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
