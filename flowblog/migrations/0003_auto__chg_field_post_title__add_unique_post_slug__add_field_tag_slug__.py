@@ -24,7 +24,7 @@ class Migration(SchemaMigration):
         # save tags to get the unique slugs
         tags = Tag.objects.all()
         for t in tags:
-            t.save()s
+            t.save()
 
         db.create_unique('flowblog_tag', ['slug'])
 
