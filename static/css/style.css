@@ -17,11 +17,12 @@ footer {
  /*   background-image: linear-gradient(to bottom, #3c3c3c 0%, #222222 100%);*/
     color: white;
 }
-
+.skinny {
+    font-weight: 300;
+}
 .main-container {
     padding-bottom:10%;
 }
-
 .main-text a {
     margin-bottom:5px;
 }
@@ -84,13 +85,6 @@ footer {
 
 
 /********** INTERNAL **********/
-.task-list-header {
-    text-align: center;
-}
-
-.task-home-container .btn-info {
-    margin-top:10px;
-}
 .row-invoice-header h3 {
     font-weight:800;
 }
@@ -103,6 +97,16 @@ footer {
 .blog-post-row {
     margin-top:20px;
     margin-bottom:20px;
+}
+.blog-header {
+    background-color:#5bc0de;
+    margin-top: -20px;
+    text-align: center;
+    padding: 50px;
+    font-size:150%!important;
+}
+.blog-content {
+    padding: 20px 0;
 }
 
 /********** RESPONSIVE **********/

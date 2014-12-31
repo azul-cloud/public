@@ -1,0 +1,18 @@
+{% extends "flowblog/layouts/two_column.html" %}
+
+{% block head %}
+  {{ block.super }}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+{% endblock %}
+
+{% block title %}
+  Blog about Web Development
+{% endblock %}
+
+{% block blog_header %}
+  Web Development Blog
+{% endblock %}
+
+{% block left_column %}
+  {% include "flowblog/include/post_list.html" %}
+{% endblock %}

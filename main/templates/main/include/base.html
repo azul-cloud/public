@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>{% block title %}Web Development for Startups{% endblock %}</title>
-
-{% block head %}
-{% include "main/include/head.html" %}
-{% endblock %}
-
-{% block extra_head %}
-{# add app-level static files here without overwriting default head #}
-{% endblock %}
-</head>
+  <head>
+  <title>{% block title %}Web Development for Startups{% endblock %}</title>
+    {% block head %}
+      {% include "main/include/head.html" %}
+    {% endblock %}
+  </head>
     <body data-spy="scroll" data-target=".navbar-fixed-top">
         {% block body_extra %}{% endblock %}{# things such as extra css or js files #}
         {% block javascript %}{% endblock %}{# javascript that needs to be added into the page #}
@@ -24,8 +19,8 @@
         </div><!--endwrap-->
         {% endblock %}
         {% block footer %}
-        <footer>
-        </footer>
+          <footer>
+          </footer>
         {% endblock %}
     </body>
 </html>

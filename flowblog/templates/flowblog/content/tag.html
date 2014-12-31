@@ -1,0 +1,9 @@
+{% extends "flowblog/layouts/two_column.html" %}
+
+{% block blog_header %}
+  <h1>Blogs for {{ tag }}</h1>
+{% endblock %}
+
+{% block left_column %}
+  {% include "flowblog/include/post_list.html" %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "main/include/base.html" %}
+
+{% block body %}
+  <div class="blog-header">
+    <h1 class="skinny" style="font-size:300%;">
+      {% block blog_header %}{% endblock %}
+    </h1>
+  </div>
+  <div class="container-fluid main-container">
+    <div class="col-sm-7 col-sm-offset-1">
+      {% block left_column %}{% endblock %}
+    </div>
+  </div>
+{% endblock %}
