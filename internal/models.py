@@ -18,17 +18,7 @@ DJANGO_VER_CHOICES = (
     ('1.3', '1.3'),
     ('1.5', '1.5'),
     ('1.6', '1.6'),
-)
-
-TASK_STATUS_CHOICES = (
-    ('N', 'New'),
-    ('I', 'In Progress'),
-    ('H', 'Hold'),
-    ('T', 'Testing'),
-    ('E', 'Test Complete'),
-    ('L', 'Loaded'),
-    ('C', 'Completed'),
-    ('D', 'Closed'),
+    ('1.7', '1.7'),
 )
 
 WEBSITE_STATUS_CHOICES = (
@@ -72,7 +62,7 @@ class Contact(models.Model):
 
 class Client(models.Model):
     name = models.CharField(max_length=30)
-    contacts = models.ManyToManyField(Contact)
+    contacts = models.ManyToManyField(Contact, null=True)
 
     def __str__(self):
         return self.name
@@ -85,7 +75,7 @@ class Project(models.Model):
     now we just have website
     '''
     client = models.ForeignKey(Client)
-    contacts = models.ManyToManyField(Contact)
+    contacts = models.ManyToManyField(Contact, null=True)
     payroll_contacts = models.ManyToManyField(Contact, related_name="payroll_contacts", null=True, blank=True)
     title = models.CharField(max_length=30)
     description = models.TextField()
@@ -133,9 +123,7 @@ class Invoice(models.Model):
         define the total amount for the individual invoice
         to the client
         '''
-        total_hours = 0
-        for h in self.hours_set.filter(invoice=self):
-            total_hours += h.hours
+        total_hours = self.total_hours()
 
         return self.rate * total_hours
 

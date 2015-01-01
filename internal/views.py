@@ -27,11 +27,6 @@ class HoursListView(ListView):
     queryset = Hours.objects.filter(invoice=None)
 
 
-class PersonHoursListView(ListView):
-    template_name = 'internal/content/hours.html'
-    model = Hours
-
-
 def project_hours(request, **kwargs):
     '''
     Active hours against a project. Active hours are defined as not currently
