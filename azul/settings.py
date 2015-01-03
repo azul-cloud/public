@@ -80,6 +80,7 @@ INSTALLED_APPS = (
     'flowblog',
     'braces',
     'crispy_forms',
+    'django_pygments',
 )
 
 MIDDLEWARE_CLASSES = (
