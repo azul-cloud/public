@@ -20,6 +20,9 @@ footer {
 .skinny {
     font-weight: 300;
 }
+.margin-top {
+    margin-top: 15px;
+}
 .main-container {
     padding-bottom:10%;
 }

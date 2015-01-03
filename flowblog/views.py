@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.detail import SingleObjectMixin
+from django.views.generic.edit import CreateView, UpdateView
 
-from flowblog.models import Post, Tag
+from braces.views import StaffuserRequiredMixin
+
+from .models import Post, Tag
+from .forms import PostCreateForm, PostUpdateForm
 
 
 class HomeListView(ListView):
@@ -36,3 +40,21 @@ class TagListView(SingleObjectMixin, ListView):
     def get_queryset(self, **kwargs):
         post_list = Post.objects.filter(tags=self.object, active=True)
         return post_list
+
+
+class BlogCreateView(StaffuserRequiredMixin, CreateView):
+    model = Post
+    template_name = "flowblog/content/create.html"
+    form_class = PostCreateForm
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(BlogCreateView, self).form_valid(form)
+
+
+class BlogUpdateView(StaffuserRequiredMixin, UpdateView):
+    model = Post
+    template_name = "flowblog/content/update.html"
+    form_class = PostUpdateForm
+
+

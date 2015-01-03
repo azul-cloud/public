@@ -48,7 +48,6 @@ class Post(SaveSlug):
     body = models.TextField()
     heading = models.CharField(max_length=150, null=True, blank=True)
     create_date = models.DateField(auto_now_add=True)
-    views = models.IntegerField(default=0)
     active = models.BooleanField(default=False)
 
     class Meta:
