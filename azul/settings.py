@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
+import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -26,9 +27,31 @@ env = os.environ.get('ENV')
 if env == 'prod':
     DEBUG = False
     SECRET_KEY = 'jql!$!bb-@!d7%6nld%x%+qx01*1r--!6#!+-sqyuco(uk$o8p'
+
+    CACHES = {
+    'default': {
+        'BACKEND': 'django_bmemcached.memcached.BMemcached',
+        'LOCATION': os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','),
+        'OPTIONS': {
+                    'username': os.environ.get('MEMCACHEDCLOUD_USERNAME'),
+                    'password': os.environ.get('MEMCACHEDCLOUD_PASSWORD')
+            }
+        }
+    }
 elif env == 'staging':
     DEBUG = False
     SECRET_KEY = 'jql!$!cb-@!d7%6mld%x%+qx00*1r--!6#!+-squuco(uk$o8p'
+
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_bmemcached.memcached.BMemcached',
+            'LOCATION': os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','),
+            'OPTIONS': {
+                        'username': os.environ.get('MEMCACHEDCLOUD_USERNAME'),
+                        'password': os.environ.get('MEMCACHEDCLOUD_PASSWORD')
+                }
+        }
+    }
 else:
     # local
     DEBUG = True

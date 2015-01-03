@@ -1,7 +1,0 @@
-This applicaiton handles the public facing website. This app is most likely going to be very small.
-
-We want to accomplish a few things:
-    Why they should use our company
-    Show examples that we have developed
-    Contact Us
-    Look amazing
