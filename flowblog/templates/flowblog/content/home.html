@@ -1,4 +1,4 @@
-{% extends "flowblog/layouts/two_column.html" %}
+{% extends "flowblog/layouts/one_column.html" %}
 
 {% block head %}
   {{ block.super }}
@@ -13,6 +13,6 @@
   Web Development Blog
 {% endblock %}
 
-{% block left_column %}
+{% block column %}
   {% include "flowblog/include/post_list.html" %}
 {% endblock %}

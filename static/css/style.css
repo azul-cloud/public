@@ -106,10 +106,12 @@ footer {
     margin-top: -20px;
     text-align: center;
     padding: 50px;
-    font-size:150%!important;
 }
-.blog-content {
-    padding: 20px 0;
+.blog-header h1 {
+    font-size: 350%;
+}
+.blog-container {
+    padding: 50px 0;
 }
 
 /********** RESPONSIVE **********/

@@ -1,0 +1,9 @@
+{% load pygmentify %}
+
+<div class="recent-posts">
+  {% for post in post_list %}
+    <p>
+      <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+    </p>
+  {% endfor %}
+</div>

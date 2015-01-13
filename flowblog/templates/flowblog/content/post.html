@@ -15,14 +15,23 @@
 
 {% block left_column %}
   <div class="blog-content">
-    <div class="row">
+    <article class="row">
       <h4>{{ post.headline }}</h4>
       <p>{{ post.body|safe}}</p>
-    </div>
+    </article>
     <div class="row text-center">
       <a href="{% url 'blog-home' %}" class="btn btn-info btn-lg">Blog Home
       <span class="glyphicon glyphicon-home"></span></a>
       {% include "flowblog/include/post_sig.html" %}
     </div>
+  </div>
+{% endblock %}
+
+{% block right_column %}
+  <h3 class="skinny text-center">Recent Posts</h3>
+  <div class="well">
+    {% with recent_posts as post_list %}
+      {% include "flowblog/include/post_list_compact.html" %}
+    {% endwith %}
   </div>
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "flowblog/include/base.html" %}
+
+{% block body %}
+  <div class="container-fluid main-container">
+    <div class="blog-header">
+      <h1 class="skinny">
+        {% block blog_header %}{% endblock %}
+      </h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        {% block column %}{% endblock %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

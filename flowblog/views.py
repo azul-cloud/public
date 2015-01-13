@@ -24,6 +24,11 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'flowblog/content/post.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        context['recent_posts'] = self.model.active_objects.recent()
+        return context
+
 
 class TagListView(SingleObjectMixin, ListView):
     '''

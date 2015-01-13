@@ -11,12 +11,21 @@ from main.factories import StaffFactory, UserFactory, AdminFactory
 User = get_user_model()
 
 
+'''
+NOTE: There are currently 3 tests failinga and I'm not sure why.
+test_post, test_update_form and test_update_post are all returning
+404 errors. It has something to do with the post URL not working right
+in the testing suite. It could possibly have something to do with SQLite
+'''
+
 class BlogSetup(TestCase):
     def setUp(self):
+        # set up users
         self.user = UserFactory.create()
         self.staff_user = StaffFactory.create()
         self.admin_user = AdminFactory.create()
 
+        # set up models
         self.tag = TagFactory.create(title="Test Tag")
         self.post = PostFactory.create(user=self.staff_user)
 
@@ -30,27 +39,30 @@ class BlogModelTest(BlogSetup):
         Post.objects.get(id=1)
         self.assertNotEqual(self.post.slug, None)
 
+    def test_recent_posts(self):
+        active_posts = Post.active_objects.recent()
+
 
 class BlogViewTest(BlogSetup, WebTest):
     def test_home(self):
         url = reverse('blog-home')
-        response = self.client.get(url)
+        response = self.app.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_post(self):
-        url = reverse('blog-post', kwargs={'slug':self.post.slug})
-        response = self.client.get(url)
+        url = self.post.get_absolute_url()
+        response = self.app.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_tag(self):
-        url = reverse('blog-tag', kwargs={'slug':self.tag.slug})
-        response = self.client.get(url)
+        url = self.tag.get_absolute_url()
+        response = self.app.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_create_post(self):
         url = reverse('blog-create')
         
-        anon_response = self.client.get(url)
+        anon_response = self.app.get(url)
         self.assertEqual(anon_response.status_code, 302)
 
         staff_response = self.app.get(url, user=self.staff_user)
@@ -59,7 +71,7 @@ class BlogViewTest(BlogSetup, WebTest):
     def test_update_post(self):
         url = reverse('blog-update', kwargs={'slug':self.post.slug})
         
-        anon_response = self.client.get(url)
+        anon_response = self.app.get(url)
         self.assertEqual(anon_response.status_code, 302)
 
         staff_response = self.app.get(url, user=self.staff_user)
@@ -78,13 +90,13 @@ class BlogFormTest(BlogSetup, WebTest):
             "body":"<h1>Incoming from test</h1>",
         }
 
-        response = self.app.post(url, post, user=self.admin_user)
+        response = self.app.post(url, post, user=self.staff_user)
 
         # make sure the response has the newly created post
         self.assertEqual(response.status_code, 302)
 
     def test_update_form(self):
-        url = reverse('blog-update', kwargs={'slug':self.post.slug})
+        url = reverse('blog-update', kwargs={'slug':'posted-title'})
 
         post = {
             "title":"Changed Title",
@@ -92,7 +104,7 @@ class BlogFormTest(BlogSetup, WebTest):
             "body":"<h1>Incoming from test</h1>",
         }
 
-        response = self.app.post(url, post, user=self.admin_user)
+        response = self.app.post(url, post, user=self.staff_user)
 
         # make sure the title was changed successfully
         self.assertEqual(response.status_code, 302)
