@@ -17,7 +17,6 @@ from braces.views import StaffuserRequiredMixin
 
 
 class HomeTemplateView(TemplateView):
-
     template_name = "internal/content/home.html"
 
 

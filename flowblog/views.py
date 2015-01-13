@@ -52,6 +52,7 @@ class TagListView(SingleObjectMixin, ListView):
         '''
         context = super(TagListView, self).get_context_data(**kwargs)
         context['post_list'] = self.get_queryset()
+        context['recent_posts'] = Post.active_objects.recent()
         return context
 
 
