@@ -28,6 +28,7 @@ class BlogSetup(TestCase):
         # set up models
         self.tag = TagFactory.create(title="Test Tag")
         self.post = PostFactory.create(user=self.staff_user)
+        self.post.tags.add(self.tag)
 
 
 class BlogModelTest(BlogSetup):

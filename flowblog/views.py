@@ -46,6 +46,14 @@ class TagListView(SingleObjectMixin, ListView):
         post_list = Post.objects.filter(tags=self.object, active=True)
         return post_list
 
+    def get_context_data(self, **kwargs):
+        '''
+        add the post list filtered by tag into the context
+        '''
+        context = super(TagListView, self).get_context_data(**kwargs)
+        context['post_list'] = self.get_queryset()
+        return context
+
 
 class BlogCreateView(StaffuserRequiredMixin, CreateView):
     model = Post

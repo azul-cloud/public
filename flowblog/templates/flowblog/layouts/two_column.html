@@ -1,15 +1,5 @@
 {% extends "flowblog/include/base.html" %}
 
-{% block navbar_items %}
-  <ul class="nav navbar-nav">
-    <li><a href="{% url 'blog-home' %}">Blog Home</a></li>
-    <li><a href="{% url 'blog-tag' 'django' %}">Django</a></li>
-    <li><a href="{% url 'blog-tag' 'angularjs' %}">AngularJS</a></li>
-    <li><a href="{% url 'blog-tag' 'small-business' %}">Small Business</a></li>
-    <li><a href="{% url 'blog-tag' 'startup-business' %}">Startups</a></li>
-  </ul>
-{% endblock %}
-
 {% block body %}
   <div class="blog-header">
     <h1 class="skinny" style="font-size:300%;">
