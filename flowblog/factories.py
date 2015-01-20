@@ -16,3 +16,4 @@ class PostFactory(DjangoModelFactory):
 
     title = "Test Post"
     body  = "<p>This is a Test Post</p>"
+    active = True

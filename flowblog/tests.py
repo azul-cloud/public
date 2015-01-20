@@ -89,6 +89,7 @@ class BlogFormTest(BlogSetup, WebTest):
             "title":"Posted Title",
             "heading":"My heading",
             "body":"<h1>Incoming from test</h1>",
+            "active":True,
         }
 
         response = self.app.post(url, post, user=self.staff_user)
@@ -97,17 +98,17 @@ class BlogFormTest(BlogSetup, WebTest):
         self.assertEqual(response.status_code, 302)
 
     def test_update_form(self):
-        url = reverse('blog-update', kwargs={'slug':'posted-title'})
+        url = reverse('blog-update', kwargs={'slug':self.post.slug})
 
-        post = {
-            "title":"Changed Title",
-            "heading":"My heading",
-            "body":"<h1>Incoming from test</h1>",
-        }
+        form = self.app.get(url, user=self.staff_user).form
+        form['title'] = 'Changed Title'
+        form['heading'] = 'My heading'
+        form['body'] = '<h1>Incoming from test</h1>'
 
-        response = self.app.post(url, post, user=self.staff_user)
+        response = form.submit().follow()
 
         # make sure the title was changed successfully
-        self.assertEqual(response.status_code, 302)
+        assert "Changed Title" in response
+        assert self.post.title not in response
 
 
