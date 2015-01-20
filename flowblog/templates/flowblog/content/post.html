@@ -1,8 +1,12 @@
 {% extends "flowblog/layouts/two_column.html" %}
+{% load static %}
 
 {% block head %}
   {{ block.super }}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/sunburst.css' %}" media="screen" />
 {% endblock %}
 
 {% block title %}
