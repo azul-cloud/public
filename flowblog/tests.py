@@ -11,13 +11,6 @@ from main.factories import StaffFactory, UserFactory, AdminFactory
 User = get_user_model()
 
 
-'''
-NOTE: There are currently 3 tests failinga and I'm not sure why.
-test_post, test_update_form and test_update_post are all returning
-404 errors. It has something to do with the post URL not working right
-in the testing suite. It could possibly have something to do with SQLite
-'''
-
 class BlogSetup(TestCase):
     def setUp(self):
         # set up users
