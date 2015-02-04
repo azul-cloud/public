@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block table_body %}
-{% for i in invoices %}
+{% for i in invoice_list %}
 <tr>
     <td>{{ i.project }}</td>
     <td>{{ i.get_status_display }}</td>

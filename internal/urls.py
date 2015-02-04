@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     url(r'hours/project/(?P<pk>\d+)/$', views.project_hours, name="project-hours"),
 
     #invoices
-    url(r'invoices/$', views.invoices, name="invoices"),
+    url(r'invoices/$', views.InvoiceListView.as_view(), name="invoices"),
     url(r'invoice/(?P<pk>\d+)/$', views.project_invoice, name="project-invoice"),
     url(r'invoice/(?P<pk>\d+)/details/$', views.project_invoice_details,
             name="project-invoice-details"),

@@ -94,20 +94,6 @@ def project_invoice(request, **kwargs):
          {'project':project, 'invoice':invoice})
 
 
-
-# class ProjectInvoiceDetailView(DetailView):
-#     template_name = 'internal/content/invoice/detail.html'
-#     model = Invoice
-
-#     def get_context_data(self, **kwargs):
-#         context = super(ArticleDetailView, self).get_context_data(**kwargs)
-#         context['invoice_hours'] = Hours.objects.filter(invoice=self.object)
-#         context['project'] = invoice.project
-#         return context
-
-# ProjectInvoice = ProjectInvoiceDetailView.as_view()
-
-
 def project_invoice_details(request, **kwargs):
     '''
     Shows a list of the hours included on an invoice and details about those hours
@@ -120,12 +106,10 @@ def project_invoice_details(request, **kwargs):
         {'project':project, 'invoice_hours':invoice_hours, 'invoice':invoice})
 
 
-def invoices(request):
-    #displays a list of all invoices
-    invoices = Invoice.objects.all()
-
-    return render(request, 'internal/content/invoice/home.html',
-        {'invoices':invoices})
+class InvoiceListView(ListView):
+    # Display all invoices and allow to edit
+    template_name = 'internal/content/invoice/home.html'
+    model = Invoice
 
 
 class ProjectListView(ListView):
