@@ -127,6 +127,16 @@ class InternalViewTest(InternalSetup):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
+    def test_projects(self):
+        url = reverse('projects')
+        response = self.client.get(url)
+        self.assertContains(response, self.project.title)
+
+    def test_project_update(self):
+        url = self.project.get_update_url()
+        response = self.client.get(url)
+        self.assertContains(response, self.project.title)
+
 
 # class BlogViewTest(BlogSetup):
 #     def test_home(self):

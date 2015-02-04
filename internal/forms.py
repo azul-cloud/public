@@ -1,34 +1,30 @@
 from django import forms
 from django.forms import ModelForm
 
-from internal.models import Task
+from .models import Project
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Fieldset, ButtonHolder, Div
 
 
-class TaskForm(ModelForm):
-
+class ProjectForm(ModelForm):
     class Meta:
-        model = Task
+        model = Project
 
     def __init__(self, *args, **kwargs):
-        super(TaskForm, self).__init__(*args, **kwargs)
+        super(ProjectForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Fieldset(
                 '',
-                "project",
+                "client",
                 "title",
+                "contacts",
                 "description",
-                "dev_notes",
-                Div("status", css_class="col-md-6"),
-                Div("assigned_to", css_class="col-md-6"),
-                Div("complete_date", css_class="col-md-6"),
-                Div("sent_date", css_class="col-md-6"),
-                Div("notify_client", css_class="col-md-6"),
+                "active",
+                "pay_amount"
             ),
             ButtonHolder(
-                Submit('submit', 'Save', css_class='btn-info btn-lg btn-block')
+                Submit('submit', 'Update', css_class='btn-info btn-lg btn-block')
             )
         )

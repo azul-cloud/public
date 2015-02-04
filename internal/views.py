@@ -11,7 +11,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 
-from internal.models import Project, Hours, Invoice
+from .models import Project, Hours, Invoice
+from .forms import ProjectForm
 
 from braces.views import StaffuserRequiredMixin
 
@@ -125,3 +126,18 @@ def invoices(request):
 
     return render(request, 'internal/content/invoice/home.html',
         {'invoices':invoices})
+
+
+class ProjectListView(ListView):
+    # Display a list of all projects
+    model = Project
+    template_name = "internal/content/project/project_list.html"
+
+
+class ProjectUpdateView(UpdateView):
+    # Update an existing project
+    model = Project
+    template_name = "internal/content/project/update_project.html"
+    form_class = ProjectForm
+
+

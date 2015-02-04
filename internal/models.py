@@ -87,6 +87,12 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('project-update', kwargs={'pk':self.id})
+
+    def get_update_url(self):
+        return self.get_absolute_url()
+
 
 class Website(models.Model):
     '''

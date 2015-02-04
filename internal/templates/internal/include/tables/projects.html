@@ -1,0 +1,22 @@
+{% extends "flowcore/tables/default.html" %}
+
+{% block table_head %}
+<tr>
+    <th>Project</th>
+    <th>Edit</th>
+    <th></th>
+</tr>
+{% endblock %}
+
+{% block table_body %}
+  {% for p in project_list %}
+    <tr>
+        <td>{{ p }}</td>
+        <td>
+          <a href="{{ p.get_update_url }}">
+            <span class="glyphicon glyphicon-edit"></span>
+          </a>
+        </td>
+    </tr>
+  {% endfor %}
+{% endblock %}
