@@ -1,4 +1,5 @@
 import datetime
+from decimal import Decimal
 
 from django.test import TestCase
 from django.contrib.auth import get_user_model
@@ -85,6 +86,12 @@ class InternalModelTest(InternalSetup):
 
         self.assertEqual(total_hours, 12)
         self.assertEqual(total_amount, 600)
+
+        invoice.expense = Decimal(20.50)
+        invoice.save()
+        total_amount = invoice.total_amount()
+
+        self.assertEqual(total_amount, 620.50)
 
     def test_hours(self):
         Hours.objects.get(id=1)

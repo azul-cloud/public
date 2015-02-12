@@ -2,22 +2,10 @@
     <h1 style="font-weight:300;">Invoice for {{ project.title }}</h1>
 </div>
 <div class="row row-invoice-header">
-    <!--<div class="col-md-4">-->
-    <!--    <h2 class="text-center">Azul Cloud Studio</h2>-->
-    <!--    <div class="col-md-4">-->
-    <!--        <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />-->
-    <!--    </div>-->
-    <!--    <div class="col-md-4">-->
-    <!--        <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />-->
-    <!--    </div>-->
-    <!--    <div class="col-md-4">-->
-    <!--        <img class="img-responsive" src="/static/img/azul_cloud_transparent.gif" />-->
-    <!--    </div>-->
-    <!--</div>-->
     <div class="col-md-4">
         <h3>ACH Transfer</h3>
-        <p>Routing: 325181248</p>
-        <p>Account: 4907465</p>
+        <p><b>Routing:</b> 325181248</p>
+        <p><b>Account:</b> 4907465</p>
     </div>
     <div class="col-md-4">
         <h3>Send Check</h3>
@@ -27,7 +15,7 @@
     </div>
     <div class="col-md-4">
         <h3>Card Payment</h3>
-        <p>Let me know if you would like to pay with a card and I will set it up</p>
+        <p>For a PayPal card payment let me know and I send a payment request</p>
     </div>
 </div>
 <div class="row row-invoice">
@@ -56,6 +44,7 @@
             <tr>
                 <th>Rate</th>
                 <th>Hours</th>
+                <th>Added Expenses</th>
                 <th>Amount Due</th>
             </tr>
         </thead>
@@ -63,6 +52,7 @@
             <tr>
                 <td>{{ invoice.rate }}</td>
                 <td>{{ invoice.total_hours }}</td>
+                <td>{{ invoice.expense }}</td>
                 <td>{{ invoice.total_amount }}</td>
             </tr>
         </tbody>

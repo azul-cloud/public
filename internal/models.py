@@ -117,6 +117,7 @@ class Invoice(models.Model):
     invoice_date = models.DateField(null=True, blank=True)
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
+    expense = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
 
     class Meta:
         ordering = ['-id']
@@ -131,7 +132,7 @@ class Invoice(models.Model):
         '''
         total_hours = self.total_hours()
 
-        return self.rate * total_hours
+        return self.rate * total_hours + self.expense
 
     def total_hours(self):
         total_hours = 0
